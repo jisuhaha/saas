@@ -19,6 +19,8 @@ ArgoCD는 GitOps 원칙을 따름Kubernetes 환경에서 지속적 배포(Contin
 - 문제 발생 시 이전 안정된 상태로 자동 롤백할 수 있어, 신속한 문제 해결이 가능.
 - 강력한 시각화 및 관리 UI
 
+### WorkFlow File CICD.yaml
+
 GitOps 원칙
 애플리케이션의 선언적 정의를 Git 저장소에 보관하고, Git을 단일 진실의 출처(single source of truth)로 사용하는 방식.
 
