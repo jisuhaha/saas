@@ -1,0 +1,40 @@
+#resultTitle {
+    font-family: 'NotoSansKR, NotoSansJP, "돋움", Dotum, AppleGothic, Tahoma, Sans-serif';
+}
+#areaAddress {
+    font : '13px / 1.4 NotoSansKR, NotoSansJP, "돋움", Dotum, AppleGothic, Sans-serif';
+    font-size: 16px;
+    color: #666;
+}
+#firstimageDiv {
+    width: 940px;
+}
+#map {
+    width: 940px;
+}
+
+#directionPage {
+    --swiper-theme-color: #007aff;
+  --swiper-navigation-size: 44px;
+  font-family: 'Pretendard';
+  border: 0;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 2;
+  bottom: 14px;
+  right: 14px;
+  width: 116px;
+  height: 51px;
+  background: #7A45E5;
+  border-radius: 24px;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 600;
+  }
+    

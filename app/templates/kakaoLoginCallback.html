@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.1/kakao.min.js"
+        integrity="sha384-kDljxUXHaJ9xAb2AzRd59KxjrFjzHa5TAoFQ6GbYTCAG0bjM55XohjjDT7tDDC01"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+        const urlStr = window.location.href;
+        const url = new URL(urlStr);
+        const urlParams = url.searchParams;
+        const kakaoCode = urlParams.get('code');
+        const host = window.location.host;
+        const protocol = window.location.protocol;;
+
+        let accessToken = null;
+        let code = null;
+        let userEmail = null;
+        let userName = null;
+        $.ajax({
+            type: "POST"
+            , url: 'https://kauth.kakao.com/oauth/token'
+            , data: {
+                grant_type: 'authorization_code',
+                client_id: 'kakao_APIKey',
+                redirect_uri: protocol+'//' + host + '/kakaoLoginCallback',
+                code: kakaoCode
+            }
+            , contentType: 'application/x-www-form-urlencoded;charset=utf-8'
+            , dataType: null
+            , success: function (response) {
+                accessToken = response.access_token;
+                requestUserInfo();
+            }
+            , error: function (jqXHR, error) {
+
+            }
+        });
+        function requestUserInfo() {
+            $.ajax({
+                type: "POST"
+                , url: 'https://kapi.kakao.com/v2/user/me'
+                , beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Authorization", "Bearer " + accessToken);
+                }
+                , contentType: 'application/x-www-form-urlencoded;charset=utf-8'
+                , dataType: null
+                , success: function (response) {
+                    userEmail = response.kakao_account.email;
+                    userName = response.kakao_account.profile.nickname;
+                    code = new URL(window.location.href).searchParams.get('code');
+                    loginFromKakao();
+                }
+                , error: function (jqXHR, error) {
+
+                }
+            });
+        }
+        function loginFromKakao() {
+
+            $.ajax({
+                type: "POST"
+                , url: '/loginFromKakao'
+                , data: {
+                    userEmail: userEmail,
+                    userName: userName
+                }
+                , contentType: 'application/x-www-form-urlencoded;charset=utf-8'
+                , success: function (response) {
+                    console.log(response);
+                    window.location.href = '/';
+                }
+                , error: function (jqXHR, error) {
+
+                }
+            });
+
+        }
+    </script>
+</body>
+
+</html>

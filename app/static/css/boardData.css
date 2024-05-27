@@ -1,0 +1,232 @@
+#content_title {
+    font-size: 36px;
+}
+
+#content_location {
+    font-size: 18px;
+}
+
+#content_address {
+    font-size: 16px;
+}
+
+#content_conent_title {
+    font-size: 18px;
+}
+
+#content_line {
+    position: absolute;
+
+}
+
+#content_content {
+    position: absolute;
+}
+
+
+
+
+
+
+
+
+
+
+/* imageslider */
+.slider__wrap {
+    padding-top: 20px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 이미지 보이는 부분 */
+.slider__img {
+    position: relative;
+    width: 600px;
+    height: 400px;
+    overflow: hidden;
+}
+
+/* 이미지 감싸고 있는 부모 : 움직이는 부분 */
+.slider__inner {
+    display: flex;
+    flex-wrap: wrap;
+    /* 총 이미지 6개 */
+    width: 3600px;
+    height: 400px;
+}
+
+/* 개별적인 이미지 */
+.slider {
+    position: relative;
+    width: 600px;
+    height: 400px;
+}
+
+.slider img {
+    width: 100%;
+}
+
+.slider::before {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    padding: 5px 10px;
+}
+
+
+
+@media (max-width: 800px) {
+    .slider__img {
+        width: 400px;
+        height: 300px;
+    }
+}
+
+
+/* board조회 */
+.tit_cont.titleType1 {
+    font: 13px/1.4 NotoSansKR, NotoSansJP, "돋움", Dotum, AppleGothic, Sans-serif;
+    color: #666;
+    -webkit-text-size-adjust: none;
+    box-sizing: border-box;
+    word-break: keep-all;
+    width: 980px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.area_tag {
+    font: 13px/1.4 NotoSansKR, NotoSansJP, "돋움", Dotum, AppleGothic, Sans-serif;
+    color: #666;
+    -webkit-text-size-adjust: none;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    word-break: keep-all;
+    padding-bottom: 0;
+    text-align: left;
+}
+
+#topTitle {
+    -webkit-text-size-adjust: none;
+    font-family: NotoSansKR, NotoSansJP, "돋움", Dotum, AppleGothic, Tahoma, Sans-serif;
+    overflow: hidden;
+    font-weight: 800;
+    color: #333;
+    font-size: 40px;
+    letter-spacing: -1px;
+    word-break: keep-all;
+    padding: 19px 0 0;
+    text-align: center;
+    margin: 0;
+}
+
+#subTitle {
+    -webkit-text-size-adjust: none;
+    font-family: NotoSansKR, NotoSansJP, "돋움", Dotum, AppleGothic, Tahoma, Sans-serif;
+    overflow: hidden;
+    font-weight: 800;
+    color: #333;
+    font-size: 24px;
+    letter-spacing: -1px;
+    word-break: keep-all;
+    padding: 19px 0 0;
+    text-align: center;
+    margin: 0;
+}
+
+#topAddt {
+    font: 13px/1.4 NotoSansKR, NotoSansJP, "돋움", Dotum, AppleGothic, Sans-serif;
+    color: #666;
+    -webkit-text-size-adjust: none;
+    margin: 0;
+    box-sizing: border-box;
+    word-break: keep-all;
+    position: relative;
+    text-align: center;
+    display: inline-block;
+    padding: 4px 0 0;
+}
+
+#topAddr>span {
+    font: 13px/1.4 NotoSansKR, NotoSansJP, "돋움", Dotum, AppleGothic, Sans-serif;
+    color: #666;
+    -webkit-text-size-adjust: none;
+    margin: 10px;
+    box-sizing: border-box;
+    word-break: keep-all;
+    position: relative;
+    text-align: center;
+    display: inline-block;
+    padding: 4px 0 0;
+}
+
+#ar_title {
+    font: 13px/1.4 NotoSansKR, NotoSansJP, "돋움", Dotum, AppleGothic, Sans-serif;
+    -webkit-text-size-adjust: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+    margin-top: 30px;
+    font-weight: 800;
+    color: #333;
+    font-size: 26px;
+    word-break: keep-all;
+    text-align: left;
+}
+
+#box_txt {
+    font: 13px/1.4 NotoSansKR, NotoSansJP, "돋움", Dotum, AppleGothic, Sans-serif;
+    color: #666;
+    -webkit-text-size-adjust: none;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    word-break: keep-all;
+    width: 100%;
+}
+
+.txt_p {
+    font: 13px/1.4 NotoSansKR, NotoSansJP, "돋움", Dotum, AppleGothic, Sans-serif;
+    -webkit-text-size-adjust: none;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    word-break: keep-all;
+    margin-top: 30px;
+    font-size: 18px;
+    color: #333;
+    line-height: 1.6;
+    text-align: left;
+}
+
+.txt_c {
+    font: 13px/1.4 NotoSansKR, NotoSansJP, "돋움", Dotum, AppleGothic, Sans-serif;
+    -webkit-text-size-adjust: none;
+    font-size: 18px;
+    color: #333;
+    line-height: 1.6;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    word-break: keep-all;
+}
+
+#content_div {
+    width: 940px;
+}
+
+button {
+    background-color: transparent;
+    border: 0;
+}
+.post_area{
+    float: right;
+}

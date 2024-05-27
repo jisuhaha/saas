@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
+    charset="utf-8"></script>
+</head>
+
+<body>
+  <script type="text/javascript">
+    let currentUrl = window.location.href;
+    var naver_id_login = new naver_id_login("naver_developer_APIKey", window.location.href.replace('/login','/naverLoginCallback') );
+    naver_id_login.get_naver_userprofile("naverSignInCallback()");
+    let userEmail = null;
+    let userName = null;
+    function naverSignInCallback() {
+      userEmail = naver_id_login.getProfileData('email');
+      userName = naver_id_login.getProfileData('name');
+      loginFromNaver();
+    }
+
+    function loginFromNaver(){
+      $.ajax({
+                type: "POST"
+                , url: '/loginFromNaver'
+                , data: {
+                    userEmail: userEmail,
+                    userName: userName
+                }
+                , contentType: 'application/x-www-form-urlencoded;charset=utf-8'
+                , success: function (response) {
+                    window.location.href = '/';
+                }
+                , error: function (jqXHR, error) {
+
+                }
+            });
+    }
+    
+  </script>
+</body>
+
+</html>

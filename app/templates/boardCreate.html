@@ -1,0 +1,241 @@
+<!-- /*
+* Template Name: Tour
+* Template Author: Untree.co
+* Tempalte URI: https://untree.co/
+* License: https://creativecommons.org/licenses/by/3.0/
+*/ -->
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Untree.co">
+	<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+    <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=your_client_id"></script>
+    <meta name="description" content="" />
+    <meta name="keywords" content="bootstrap, bootstrap4" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/owl.theme.default.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/jquery.fancybox.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='fonts/icomoon/style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='fonts/flaticon/font/flaticon.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/daterangepicker.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/aos.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/boardCreate.css')}}">
+
+    <title>나드리</title>
+</head>
+
+<body>
+
+
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close">
+                <span class="icofont-close js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+
+    <nav class="site-nav">
+        <div class="container">
+            <div class="site-navigation">
+                <span id="logo_span">
+                    <img id="site_logo" src="/static/images/logo.png">
+                </span>
+                <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
+                    <li><a href="/">홈</a></li>
+                    <li><a href="/recommand">여행지 추천</a></li>
+                    <li class="li_board active"><a href="/board">후기게시판</a></li>
+					&nbsp;
+					&nbsp;
+					&nbsp;
+					<!-- {% if userInfo.name %}
+					<li id="logout">{{userInfo.name}}님 안녕하세요 <a href="#" onclick="logout()">로그아웃</a></li>
+					{% else %}
+					<li id="login"><a href="/login">로그인</a></li>
+					{% endif %} -->
+                </ul>
+
+                <a href="#"
+                    class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light"
+                    data-toggle="collapse" data-target="#main-navbar">
+                    <span></span>
+                </a>
+
+            </div>
+        </div>
+    </nav>
+
+
+
+    <div class="hero hero-inner">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mx-auto text-center">
+                    <div class="intro-wrap">
+                        <h1 class="mb-0"></h1>
+                        <p class="text-white"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="untree_co-section">
+        <div class="container my-5" style="text-align: center;">
+            <div class="board_wrap">
+                <div class="board_title">
+                    <strong>후기 입력</strong>
+                    <p></p>
+                </div>
+                <form action="/boardCreateService" method="post" id="boardForm" enctype="multipart/form-data">
+                    <div class="board_write_wrap">
+                        <div class="board_write">
+                            <div class="title">
+                                <dl>
+                                    <dt>제목</dt>
+                                    <dd><input id="title" name="title" type="text" placeholder="제목 입력" /></dd>
+                                    <dd>
+                                        <p id="errorTitle" class="input_error_message"></p>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="info">
+                                <dl>
+                                    <dt>장소</dt>
+                                    <dd><input id="location" name="location" type="text" placeholder="장소 입력" /></dd>
+                                    <dd>
+                                        <p id="errorLocation" class="input_error_message"></p>
+                                    </dd>
+                                    <div class="related_search">
+                                        <dl>
+                                        </dl>
+                                    </div>
+                                </dl>
+                            </div>
+                            <div style="font-size: 20px; float: left;">본문내용</div>
+                            <div class="cont">
+                                <textarea id="content" name="content" placeholder="본문내용 입력"></textarea>
+                                <dd>
+                                    <p id="errorContent" class="input_error_message"></p>
+                                </dd>
+                            </div>
+                        </div>
+                        <section id="ex9">
+                            <div id="upload_container">
+                                <div class="upload-box">
+                                    <!-- <input type="file" class="btn-file d-none"> -->
+                                    <input id="inputFile" name = "thumbnailFile[]" type="file" class="file_tag" multiple onchange="setThumbnail();">
+                                </div>
+                            </div>
+                            <div id="image_container">
+        
+                            </div>
+                        </section>
+                        <div class="bt_wrap">
+                            <a href="javascript:submitForm();">등록</a>
+                            <a href="javascript:cancleSubmit();">취소</a>
+                        </div>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+
+    <div id="footer_div" class="site-footer">
+		<div class="inner first">
+			<div class="container">
+				<div class="row">
+					<div id="weatherwidget">
+					<div id="ww_a5421165a18a5" v='1.3' loc='id' a='{"t":"horizontal","lang":"ko","sl_lpl":1,"ids":[],"font":"Arial","sl_ics":"one_a","sl_sot":"celsius","cl_bkg":"rgba(255,255,255,1)","cl_font":"rgba(112,202,160,1)","cl_cloud":"rgba(204,219,222,1)","cl_persp":"#81D4FA","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722"}'>More forecasts: <a href="https://oneweather.org/seoul/30_days/" id="ww_a5421165a18a5_u" target="_blank">Weather forecast Seoul 30 days</a></div><script async src="https://app2.weatherwidget.org/js/?id=ww_a5421165a18a5"></script>
+					</div>
+					<div class="col-md-6 col-lg-4">
+						<div class="widget">
+							<h3 class="heading">About Tour</h3>
+							<p>현 위치를 기반으로 사용자 맞춤 여행지를 추천하는 서비스, 나드리입니다.</p>
+							<p> 컨셉을 지정해 원하는 여행지를 쉽게 찾아보세요.</p>
+						</div>
+						<div class="widget">
+							<ul class="list-unstyled social">
+								<li><a href="#"><span class="icon-twitter"></span></a></li>
+								<li><a href="#"><span class="icon-instagram"></span></a></li>
+								<li><a href="#"><span class="icon-facebook"></span></a></li>
+								<li><a href="#"><span class="icon-linkedin"></span></a></li>
+								<li><a href="#"><span class="icon-dribbble"></span></a></li>
+								<li><a href="#"><span class="icon-pinterest"></span></a></li>
+								<li><a href="#"><span class="icon-apple"></span></a></li>
+								<li><a href="#"><span class="icon-google"></span></a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-4">
+						<div class="widget">
+							<h3 class="heading"></h3>
+							<ul class="list-unstyled quick-info links">
+								<li><strong>대표 </strong>김태훈, 정하늘, 한지수</li>
+								<li><strong>사업자 번호 </strong>911-98-92348</li>
+								<li><strong>직업정보제공사업 신고번호 </strong>X9200020200016</li>
+								<li><strong>통신판매업 신고번호 </strong>2024-서울강남-9099</li>
+								<li><strong>고객문의 </strong>cs@nadri-project.com</li>
+								<li><strong>전화 </strong>+82 02-574-4222</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="inner dark">
+			<div class="container">
+				<div class="row text-center">
+					<div class="col-md-8 mb-3 mb-md-0 mx-auto">
+						<p>Copyright &copy; <script>document.write(new Date().getFullYear());</script>. nadri Corp. All Rights Reserved.</p>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <div id="overlayer"></div>
+    <div class="loader">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
+    <script src="{{url_for('static',filename='js/jquery-3.4.1.min.js')}}"></script>
+    <script src="{{url_for('static',filename='js/popper.min.js')}}"></script>
+    <script src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static',filename='js/owl.carousel.min.js')}}"></script>
+    <script src="{{url_for('static',filename='js/jquery.animateNumber.min.js')}}"></script>
+    <script src="{{url_for('static',filename='js/jquery.waypoints.min.js')}}"></script>
+    <script src="{{url_for('static',filename='js/jquery.fancybox.min.js')}}"></script>
+    <script src="{{url_for('static',filename='js/aos.js')}}"></script>
+    <script src="{{url_for('static',filename='js/moment.min.js')}}"></script>
+    <script src="{{url_for('static',filename='js/daterangepicker.js')}}"></script>
+
+    <script src="{{url_for('static',filename='js/typed.js')}}"></script>
+
+    <script src="{{url_for('static',filename='js/custom.js')}}"></script>
+    <script src="{{url_for('static',filename='js/boardCreate.js')}}"></script>
+	<script src="{{url_for('static',filename='js/topFrame.js')}}"></script>
+</body>
+
+</html>
